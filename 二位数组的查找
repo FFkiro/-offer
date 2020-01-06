@@ -1,0 +1,42 @@
+public class putout {
+	public static void main(String[] args) {
+		int[][] array = { { 1, 2, 8, 9 }, { 2, 4, 9, 12 }, { 4, 7, 10, 13 }, { 6, 8, 11, 15 } };
+		int [][] intB = null;
+		System.out.print(Find(0, intB));
+	}
+
+	public static boolean Find(int target, int[][] array) {
+
+		if(array==null||array.length==0||(array.length==1&&array[0].length==0)){
+			return false;
+		}
+		
+		int Cmax = array[0].length - 1;
+		int Kmax = array.length - 1;
+		int start = 0;
+		
+		while (true) {
+
+			if (array[start][Cmax] == target) {
+				return true;
+			}
+
+			if (array[start][Cmax] > target) {
+				Cmax = Cmax - 1;
+				if (Cmax < 0) {
+					break;
+				}
+			}
+
+			if (array[start][Cmax] < target) {
+				start = start + 1;
+				if (start > Kmax) {
+					break;
+				}
+			}
+
+		}
+
+		return false;
+	}
+}
